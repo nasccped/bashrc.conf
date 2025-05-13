@@ -11,15 +11,14 @@
 alias ls='ls --color=auto'
 
 RESET_ESCAPE="\e[0m"
-RED_ESCAPE="\e[1;91m"
 GREEN_ESCAPE="\e[1;92m"
 YELLOW_ESCAPE="\e[1;93m"
-MAGENTA_ESCAPE="\e[1;95m"
+BLUE_ESCAPE="\e[1;94m"
 CYAN_ESCAPE="\e[1;96m"
 WHITE_ESCAPE="\e[1;97m"
 
 get_user_name() {
-  echo -e "${GREEN_ESCAPE}$(whoami)"
+  echo -e "${GREEN_ESCAPE}$(whoami)${RESET_ESCAPE}"
 }
 
 get_cur_dir() {
@@ -29,7 +28,7 @@ get_cur_dir() {
   else
     curdir=$(pwd | rev | cut -d'/' -f 1 | rev)
   fi
-  echo -e "${MAGENTA_ESCAPE}$curdir"
+  echo -e "${BLUE_ESCAPE}$curdir${RESET_ESCAPE}"
 }
 
 get_branch() {
@@ -37,13 +36,17 @@ get_branch() {
   if [ -z $curbranch ]; then
     curbranch="?"
   else
-    curbranch="${CYAN_ESCAPE}$curbranch${YELLOW_ESCAPE}"
+    curbranch="${CYAN_ESCAPE}$curbranch${RESET_ESCAPE}"
   fi
-  echo -e "${YELLOW_ESCAPE}git:($curbranch)"
+  local gitbranch="${YELLOW_ESCAPE}git:($curbranch${YELLOW_ESCAPE})${RESET_ESCAPE}"
+  echo -e "$gitbranch"
 }
 
-get_pre_prompt() {
-  echo -e "${WHITE_ESCAPE}[\$(get_user_name)${WHITE_ESCAPE}.\$(get_cur_dir) \$(get_branch)${WHITE_ESCAPE}] \$${RESET_ESCAPE}"
+get_ps1() {
+  local luser=$(get_user_name)
+  local ldir=$(get_cur_dir)
+  # local lbranch=$(get_branch) this won't work
+  echo -e "${WHITE_ESCAPE}[$luser${WHITE_ESCAPE}.$ldir \$(get_branch)${WHITE_ESCAPE}]\$${RESET_ESCAPE}"
 }
 
-export PS1="$(get_pre_prompt) "
+export PS1="$(get_ps1) "
