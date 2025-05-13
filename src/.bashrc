@@ -44,9 +44,9 @@ get_branch() {
 
 get_ps1() {
   local luser=$(get_user_name)
-  local ldir=$(get_cur_dir)
-  # local lbranch=$(get_branch) this won't work
-  echo -e "${WHITE_ESCAPE}[$luser${WHITE_ESCAPE}.$ldir \$(get_branch)${WHITE_ESCAPE}]\$${RESET_ESCAPE}"
+  # local ldir=$(get_cur_dir) this won't work
+  # local lbranch=$(get_branch) this won't work too
+  echo -e "${WHITE_ESCAPE}[$luser${WHITE_ESCAPE}.\$(get_cur_dir) \$(get_branch)${WHITE_ESCAPE}]\$${RESET_ESCAPE}"
 }
 
 export PS1="$(get_ps1) "
