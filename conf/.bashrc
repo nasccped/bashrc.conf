@@ -11,42 +11,38 @@
 alias ls='ls --color=auto'
 
 RESET_ESCAPE="\e[0m"
-GREEN_ESCAPE="\e[1;92m"
-YELLOW_ESCAPE="\e[1;93m"
-BLUE_ESCAPE="\e[1;94m"
-CYAN_ESCAPE="\e[1;96m"
+RED_ESCAPE="\e[1;38;5;203m"
+GREEN_ESCAPE="\e[1;38;5;156m"
+BLUE_ESCAPE="\e[1;38;5;153m"
+MAGENTA_ESCAPE="\e[1;38;5;218m"
 WHITE_ESCAPE="\e[1;97m"
 
-get_user_name() {
-  echo -e "${GREEN_ESCAPE}$(whoami)${RESET_ESCAPE}"
+get_user() {
+  local luser=$(whoami)
+  echo -e "$BLUE_ESCAPE$luser$RESET_ESCAPE"
 }
 
-get_cur_dir() {
-  local curdir=$(pwd)
-  if [ "$curdir" == "$HOME" ]; then
-    curdir="~"
-  else
-    curdir=$(pwd | rev | cut -d'/' -f 1 | rev)
-  fi
-  echo -e "${BLUE_ESCAPE}$curdir${RESET_ESCAPE}"
+get_hostname() {
+  local lhostname=$(hostname)
+  echo -e "$RED_ESCAPE$lhostname$RESET_ESCAPE"
 }
 
-get_branch() {
-  local curbranch=$(git branch 2> /dev/null | grep '*' | sed 's/* /*/')
-  if [ -z $curbranch ]; then
-    curbranch="?"
+get_curdir() {
+  local lcurdir=$(pwd)
+  if [ "$lcurdir" == $HOME ]; then
+    lcurdir="~"
   else
-    curbranch="${CYAN_ESCAPE}$curbranch${RESET_ESCAPE}"
+    lcurdir=$(echo $lcurdir | rev | cut -d'/' -f 1 | rev)
   fi
-  local gitbranch="${YELLOW_ESCAPE}git:($curbranch${YELLOW_ESCAPE})${RESET_ESCAPE}"
-  echo -e "$gitbranch"
+  echo -e "$MAGENTA_ESCAPE$lcurdir$RESET_ESCAPE"
 }
 
 get_ps1() {
-  local luser=$(get_user_name)
-  # local ldir=$(get_cur_dir) this won't work
-  # local lbranch=$(get_branch) this won't work too
-  echo -e "${WHITE_ESCAPE}[$luser${WHITE_ESCAPE}.\$(get_cur_dir) \$(get_branch)${WHITE_ESCAPE}]\$${RESET_ESCAPE}"
+  local lu=$(get_user)
+  local lh=$(get_hostname)
+  local lc=$(get_curdir)
+  echo -e "$lh$WHITE_ESCAPE@$lu $lc $GREEN_ESCAPE\$$RESET_ESCAPE "
 }
 
-export PS1="$(get_ps1) "
+PS1='$(get_ps1)'
+
