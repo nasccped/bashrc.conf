@@ -1,8 +1,3 @@
-# .bashrc
-
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
 # if you want to use some bin program, adds the path and
 # 'uncomment' the following line:
 # export PATH="$HOME/path/to/bin:$PATH"
