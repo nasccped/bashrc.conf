@@ -3,12 +3,18 @@ bashrc config
 
 Here is my `.bashrc` configurations!
 
-Clone repo and move files can be borigin a lot, so you can just
-**copy** and **paste** the file content instead.
+## Set up the configurations
 
-All necessary content will be disposed at [src/.bashrc][src-bashrc]. Just copy
-it to your local `.bashrc` (probably located in your _home/USERNAME_
-path). [Git program][git-link] will be necessary!
-
-[src-bashrc]: https://github.com/nasccped/bashrc.conf/blob/main/src/.bashrc
-[git-link]: https://git-scm.com/downloads
+1. Clone the repository
+```sh
+git clone --depth 1 https://github.com/nasccped/bashrc.conf
+```
+2. `cd` + remove git folder
+```sh
+cd bashrc.conf
+rm -rf .git
+```
+3. Add the config
+```sh
+echo ./conf/.bashrc >> $HOME/.bashrc
+```
