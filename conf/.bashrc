@@ -36,7 +36,7 @@ get_ps1() {
   local lu=$(get_user)
   local lh=$(get_hostname)
   local lc=$(get_curdir)
-  echo -e "$lh$WHITE_ESCAPE@$lu $lc $GREEN_ESCAPE\$$RESET_ESCAPE "
+  echo -e "$lu$WHITE_ESCAPE@$lh $lc $GREEN_ESCAPE\$$RESET_ESCAPE "
 }
 
 PS1='$(get_ps1)'
