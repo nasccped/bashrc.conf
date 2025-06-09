@@ -14,12 +14,12 @@ WHITE_ESCAPE="\e[1;97m"
 
 get_user() {
   local luser=$(whoami)
-  echo -e "$BLUE_ESCAPE$luser$RESET_ESCAPE"
+  echo -e "$RED_ESCAPE$luser$RESET_ESCAPE"
 }
 
 get_hostname() {
   local lhostname=$(hostname)
-  echo -e "$RED_ESCAPE$lhostname$RESET_ESCAPE"
+  echo -e "$BLUE_ESCAPE$lhostname$RESET_ESCAPE"
 }
 
 get_curdir() {
