@@ -12,6 +12,13 @@ BLUE_ESCAPE="\e[1;38;5;159m"
 MAGENTA_ESCAPE="\e[1;38;5;218m"
 WHITE_ESCAPE="\e[1;97m"
 
+reset_cursor() {
+  # this cursor-shape in the underline blinking one
+  # I can set your prefered (search for cursor shape escapes)
+  local prefered_cursor="\e[3 q"
+  echo -e "$prefered_cursor"
+}
+
 get_user() {
   local luser=$(whoami)
   echo -e "$RED_ESCAPE$luser$RESET_ESCAPE"
@@ -33,10 +40,11 @@ get_curdir() {
 }
 
 get_ps1() {
+  local lc=$(reset_cursor)
   local lu=$(get_user)
   local lh=$(get_hostname)
-  local lc=$(get_curdir)
-  echo -e "$lu$WHITE_ESCAPE@$lh $lc $GREEN_ESCAPE\$$RESET_ESCAPE "
+  local ld=$(get_curdir)
+  echo -e "$lc$lu$WHITE_ESCAPE@$lh $ld $GREEN_ESCAPE\$$RESET_ESCAPE "
 }
 
 PS1='$(get_ps1)'
