@@ -8,7 +8,7 @@ alias ls='ls --color=auto'
 RESET_ESCAPE="\e[0m"
 RED_ESCAPE="\e[1;38;5;203m"
 GREEN_ESCAPE="\e[1;38;5;156m"
-BLUE_ESCAPE="\e[1;38;5;147m"
+BLUE_ESCAPE="\e[1;38;5;159m"
 MAGENTA_ESCAPE="\e[1;38;5;218m"
 WHITE_ESCAPE="\e[1;97m"
 
