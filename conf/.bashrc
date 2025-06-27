@@ -13,7 +13,7 @@ MAGENTA_ESCAPE="\e[1;38;5;218m"
 WHITE_ESCAPE="\e[1;97m"
 
 reset_cursor() {
-  # this cursor-shape in the underline blinking one
+  # this cursor-shape is the underline blinking one
   # I can set your prefered (search for cursor shape escapes)
   local prefered_cursor="\e[3 q"
   echo -e "$prefered_cursor"
