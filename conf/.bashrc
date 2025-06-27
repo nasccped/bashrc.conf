@@ -10,6 +10,7 @@ RED_ESCAPE="\e[1;38;5;203m"
 GREEN_ESCAPE="\e[1;38;5;156m"
 BLUE_ESCAPE="\e[1;38;5;159m"
 MAGENTA_ESCAPE="\e[1;38;5;218m"
+CYAN_ESCAPE="\e[1;96m"
 WHITE_ESCAPE="\e[1;97m"
 
 reset_cursor() {
@@ -26,7 +27,7 @@ get_user() {
 
 get_hostname() {
   local lhostname=$(hostname)
-  echo -e "$BLUE_ESCAPE$lhostname$RESET_ESCAPE"
+  echo -e "$CYAN_ESCAPE$lhostname$RESET_ESCAPE"
 }
 
 get_curdir() {
