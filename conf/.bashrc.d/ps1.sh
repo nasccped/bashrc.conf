@@ -6,13 +6,6 @@ MAGENTA_ESCAPE="\e[1;38;5;218m"
 CYAN_ESCAPE="\e[1;96m"
 WHITE_ESCAPE="\e[1;97m"
 
-reset_cursor() {
-  # this cursor-shape is the underline blinking one
-  # I can set your prefered (search for cursor shape escapes)
-  local prefered_cursor="\e[3 q"
-  echo -e "$prefered_cursor"
-}
-
 get_user() {
   local luser=$(whoami)
   echo -e "$RED_ESCAPE$luser$RESET_ESCAPE"
@@ -34,7 +27,6 @@ get_curdir() {
 }
 
 get_ps1() {
-  local lc=$(reset_cursor)
   local lu=$(get_user)
   local lh=$(get_hostname)
   local ld=$(get_curdir)
