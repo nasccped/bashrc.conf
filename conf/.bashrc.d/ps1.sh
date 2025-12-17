@@ -1,10 +1,10 @@
 RESET_ESCAPE="\e[0m"
-RED_ESCAPE="\e[1;38;5;203m"
-GREEN_ESCAPE="\e[1;38;5;156m"
-BLUE_ESCAPE="\e[1;38;5;159m"
-MAGENTA_ESCAPE="\e[1;38;5;218m"
-CYAN_ESCAPE="\e[1;96m"
-WHITE_ESCAPE="\e[1;97m"
+RED_ESCAPE="\e[91m"
+GREEN_ESCAPE="\e[92m"
+BLUE_ESCAPE="\e[94m"
+MAGENTA_ESCAPE="\e[95m"
+CYAN_ESCAPE="\e[96m"
+WHITE_ESCAPE="\e[97m"
 
 get_user() {
   local luser=$(whoami)
