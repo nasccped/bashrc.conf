@@ -13,35 +13,32 @@ linux approach which is pretty smart!
 
 1. Clone the repository
 ```sh
-git clone --depth 1 https://github.com/nasccped/bashrc.conf
+git clone --depth 1 https://github.com/nasccped/bashrc.conf && cd bashrc.conf
 ```
-2. `cd` + remove git folder
+
+2. run the `update.sh` script:
 ```sh
-cd bashrc.conf
-rm -rf .git
+./update.sh
 ```
-3. Add the config
-```sh
-# move configs
-mv ./const/.bashrc.d $HOME/
-# move call script
-cat ./conf/.bashrc >> $HOME/.bashrc
-```
+
+This script will do all the job.
+
+## Notes
+
+The script also checks if an `bashrc` directory and it's inner files
+exists. Then, copy the necessary files to that dir + update the
+`.bashrc` file if needed.
+
+The `bashrc` directory's files won't be update! Instead, you should
+remove the file that want to change + run the `update.sh` (or just
+change it manually).
 
 > [!WARNING]
 >
-> Since the `.bashrc.d` think is a Fedora env. approach, ensures that
-> you doesn't already have this directory in your `$HOME` path. If
-> so, just copy the inner files with
-> `cp conf/.bashrc.d/*.sh $HOME/.bashrc.d/`.
->
-> ---
->
 > I've wrote the bashrc in Void-Linux which have the `hostname`
-> command (for getting the... hostname). But this command might not
-> be found in distros default image. In case of `Archlinux`, you
-> should run `sudo pacman -S inetutils` which contains the `hostname`
-> binary!
+> command, but this command might not be found in distros default
+> image. In case of `Archlinux`, you should run `sudo pacman -S
+> inetutils` which contains the `hostname` binary!
 >
 > The Arch incident was just an example. You'll need to search for
 > the solution by your own.
