@@ -42,3 +42,8 @@ change it manually).
 >
 > The Arch incident was just an example. You'll need to search for
 > the solution by your own.
+>
+> Required commands:
+>
+> - `tput`
+> - `whoami`
